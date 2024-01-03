@@ -1,4 +1,7 @@
 <script setup>
+import {useGameStore} from '@/stores/game'
+const gameStore = useGameStore()
+
 
 const props = defineProps({
     letter : {

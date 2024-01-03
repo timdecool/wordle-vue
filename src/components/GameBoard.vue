@@ -2,12 +2,12 @@
 import GameRow from '@/components/GameRow.vue'
 import { useGameStore } from '@/stores/game'
 const gameStore = useGameStore()
+
 </script>
 
 <template>
-    Les mots devinés : {{ gameStore.guessedWords }}
     <div class="board">
-        <game-row v-for="n in 6" :key="n" :row="n-1"/>
+        <game-row v-for="n in 6" :key="n" :row="n-1" :word="gameStore.guessedWords[n-1]" :correction="gameStore.corrections[n-1]"/>
 
     </div>
 </template>
