@@ -7,7 +7,7 @@
 
 <template>
     <section @keydown="gameStore.handleKeyDown" tabindex="0">
-        <h1>C'est le jeu</h1>
+        <h2>Partie du jour</h2>
         <game-board>
         </game-board>
     </section>
@@ -15,5 +15,11 @@
 </template>
 
 <style>
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
 
 </style>

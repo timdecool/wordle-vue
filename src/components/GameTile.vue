@@ -1,5 +1,6 @@
 <script setup>
 import {useGameStore} from '@/stores/game'
+import { onUpdated } from 'vue';
 const gameStore = useGameStore()
 
 
@@ -20,10 +21,14 @@ const props = defineProps({
     }
 })
 
+onUpdated(() => {
+
+})
+
 </script>
 
 <template>
-    <div class="tile" :class="state">{{ letter }}</div>
+    <div class="tile activated" :class="state">{{ letter }}</div>
 </template>
 
 <style scoped>
@@ -51,6 +56,10 @@ const props = defineProps({
 .misplaced {
     background-color: rgb(145, 145, 13);
     border: rgb(145, 145, 13);
+}
+
+.activated {
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
 }
 
 </style>

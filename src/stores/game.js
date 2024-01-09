@@ -9,7 +9,6 @@ export const useGameStore = defineStore("game", () => {
   const guessedWords = ref([""]);
   const corrections = ref([])
   const currentRow = ref(0);
-  const currentTile = ref(0);
 
   // ACTIONS
 
@@ -19,17 +18,9 @@ export const useGameStore = defineStore("game", () => {
   }
 
   function verifyWord() {
-
     // On vérifie d'abord que le mot est bien dans le dictionnaire
     if (dictionaryStore.dictionary.indexOf(guessedWords.value[currentRow.value]) > -1) 
     {
-
-      // Ensuite, on vérifie si le mot proposé est le mot à trouver
-      if (guessedWords.value[currentRow.value] === dictionaryStore.correctWord) {
-        console.log("c'est gagné !");
-
-      // Si ce n'est pas le cas, on traite le détail
-      } else {
         const correction = []
         const foundLetters = []
         // Boucle pour les lettres bien placées
@@ -60,23 +51,29 @@ export const useGameStore = defineStore("game", () => {
               foundLetters.push(guessedWords.value[currentRow.value][i]);
             }
           }
-          else {
-            if(correction[i] === undefined) correction[i] = "wrong"
-          }
-          corrections.value.push(correction)
+
+          if(correction[i] === undefined) correction[i] = "wrong"
+          
         }
-        console.log(correction)
+        corrections.value.push(correction)
 
-
-        // if (word == currentUserWord) {
-        // } else if (currentLine != 5) {
-        //   currentLine++;
-        //   currentUserWord = "";
-        //   foundLetters = [];
-        // } else {
-        // }
+              // Ensuite, on vérifie si le mot proposé est le mot à trouver
+      if (guessedWords.value[currentRow.value] === dictionaryStore.correctWord) {
+        endGame(true)
+      } else if(currentRow.value < 5) {
         incrementRow()
+      } else {
+        endGame(false)
       }
+    }
+  }
+
+  function endGame(isCompleted) {
+    if(isCompleted) {
+      console.log('bravo !')
+    }
+    else {
+      console.log('triste...')
     }
   }
 

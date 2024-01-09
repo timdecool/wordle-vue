@@ -21,7 +21,6 @@ export const useDictionaryStore = defineStore('dictionary', () => {
         lines = lines.filter(word => word.at(-1) != "S" && word.at(-1) != "A" && word.at(-1) != "Z")
         restrictedDictionary.value = [...new Set(lines)];
         correctWord.value = randomWord()
-        console.log(correctWord.value)
         } catch(error) {
         console.error('Une erreur s\'est produite lors de l\'importation du fichier :', error);
     }
