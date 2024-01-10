@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useDictionaryStore = defineStore('dictionary', () => {
@@ -34,9 +34,6 @@ function retirerAccents(str) {
 function randomWord() {
     return restrictedDictionary.value[Math.floor(Math.random()*restrictedDictionary.value.length)]
 }
-
-
-
 
   return { importWords, randomWord, dictionary, restrictedDictionary, correctWord }
 })

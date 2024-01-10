@@ -1,7 +1,5 @@
 <script setup>
 import GameTile from '@/components/GameTile.vue'
-import {useGameStore} from '@/stores/game'
-const gameStore = useGameStore()
 
 const props = defineProps({
     row: {
