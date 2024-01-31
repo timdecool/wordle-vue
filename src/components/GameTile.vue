@@ -28,7 +28,7 @@ const props = defineProps({
 
 <style scoped>
 .tile {
-    border: 1px solid rgb(134, 134, 134);
+    border: 1px solid rgb(190, 190, 190);
     height: 50px;
     width: 50px;
     display: flex;
@@ -36,21 +36,22 @@ const props = defineProps({
     align-items: center;
     font-size: 30px;
     font-weight: bold;
+    border-radius: 5px;
 }
 
 .wrong {
-    background-color: rgb(54, 54, 54);
-    border: rgb(54, 54, 54);
+    background-color: rgb(182, 182, 182);
+    border: rgb(182, 182, 182);
 }
 
 .placed {
-    background-color: rgb(24, 128, 24);
-    border: rgb(24, 128, 24);
+    background-color: rgb(135, 235, 135);
+    border: rgb(135, 235, 135);
 }
 
 .misplaced {
-    background-color: rgb(145, 145, 13);
-    border: rgb(145, 145, 13);
+    background-color: rgb(228, 228, 83);
+    border: rgb(228, 228, 83);
 }
 
 </style>

@@ -5,7 +5,10 @@ import MainNavbar from '@/components/layout/MainNavbar.vue'
 </script>
 
 <template>
-  <main-navbar shadowed />
+  <main-navbar 
+    shadowed 
+    color=""
+  />
 
   <RouterView />
 </template>

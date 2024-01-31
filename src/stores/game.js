@@ -20,65 +20,58 @@ export const useGameStore = defineStore("game", () => {
   function verifyWord() {
 
     // On vérifie d'abord que le mot est bien dans le dictionnaire
-    if (dictionaryStore.dictionary.indexOf(guessedWords.value[currentRow.value]) > -1) 
-    {
+    if (dictionaryStore.dictionary.indexOf(guessedWords.value[currentRow.value]) > -1) {
 
-      // Ensuite, on vérifie si le mot proposé est le mot à trouver
-      if (guessedWords.value[currentRow.value] === dictionaryStore.correctWord) {
-        console.log("c'est gagné !");
-
-      // Si ce n'est pas le cas, on traite le détail
-      } else {
-        const correction = []
-        const foundLetters = []
-        // Boucle pour les lettres bien placées
-        for (let i = 0; i < 5; i++) {
-          if (guessedWords.value[currentRow.value][i] === dictionaryStore.correctWord[i]) {
-            correction[i] = "placed"
-            foundLetters.push(guessedWords.value[currentRow.value][i])
-          }
+      const correction = []
+      const foundLetters = []
+      // Boucle pour les lettres bien placées
+      for (let i = 0; i < 5; i++) {
+        if (guessedWords.value[currentRow.value][i] === dictionaryStore.correctWord[i]) {
+          correction[i] = "placed"
+          foundLetters.push(guessedWords.value[currentRow.value][i])
         }
-
-        // Boucle pour les lettres mal placées
-        for (let i = 0; i < 5; i++) {
-          if (
-            dictionaryStore.correctWord.indexOf(guessedWords.value[currentRow.value][i]) > -1 &&
-            dictionaryStore.correctWord.indexOf(guessedWords.value[currentRow.value][i]) != i
-          ) {
-            let cptFL = 0;
-            let cptWord = 0;
-            for (let foundLetter of foundLetters) {
-              if (foundLetter === guessedWords.value[currentRow.value][i]) cptFL++;
-            }
-            for (let j = 0; j < 5; j++) {
-              if (dictionaryStore.correctWord[j] === guessedWords.value[currentRow.value][i]) cptWord++;
-            }
-
-            if (cptFL < cptWord) {
-              correction[i] = "misplaced"
-              foundLetters.push(guessedWords.value[currentRow.value][i]);
-            }
-          }
-          
-        for (let i = 0; i < 5; i++)  {
-            if(correction[i] === undefined) correction[i] = "wrong"
-          }
-        }
-        corrections.value.push(correction)
-        console.log(corrections)
-
-
-        // if (word == currentUserWord) {
-        // } else if (currentLine != 5) {
-        //   currentLine++;
-        //   currentUserWord = "";
-        //   foundLetters = [];
-        // } else {
-        // }
-        incrementRow()
       }
+
+      // Boucle pour les lettres mal placées
+      for (let i = 0; i < 5; i++) {
+        if (
+          dictionaryStore.correctWord.indexOf(guessedWords.value[currentRow.value][i]) > -1 &&
+          dictionaryStore.correctWord.indexOf(guessedWords.value[currentRow.value][i]) != i
+        ) {
+          let cptFL = 0;
+          let cptWord = 0;
+          for (let foundLetter of foundLetters) {
+            if (foundLetter === guessedWords.value[currentRow.value][i]) cptFL++;
+          }
+          for (let j = 0; j < 5; j++) {
+            if (dictionaryStore.correctWord[j] === guessedWords.value[currentRow.value][i]) cptWord++;
+          }
+
+          if (cptFL < cptWord) {
+            correction[i] = "misplaced"
+            foundLetters.push(guessedWords.value[currentRow.value][i]);
+          }
+        }
+
+        for (let i = 0; i < 5; i++) {
+          if (correction[i] === undefined) correction[i] = "wrong"
+        }
+      }
+      corrections.value.push(correction)
+      console.log(corrections)
+
+
+      // if (word == currentUserWord) {
+      // } else if (currentLine != 5) {
+      //   currentLine++;
+      //   currentUserWord = "";
+      //   foundLetters = [];
+      // } else {
+      // }
+      incrementRow()
     }
   }
+
 
   function handleKeyDown(e) {
     if (e.key === "Backspace") {

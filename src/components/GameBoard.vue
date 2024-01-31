@@ -6,10 +6,13 @@ const gameStore = useGameStore()
 </script>
 
 <template>
-    <div class="board">
-        <game-row v-for="n in 6" :key="n" :row="n-1" :word="gameStore.guessedWords[n-1]" :correction="gameStore.corrections[n-1]"/>
-
-    </div>
+    <VaCard>
+        <VaCardContent>
+            <div class="board">
+                <game-row v-for="n in 6" :key="n" :row="n-1" :word="gameStore.guessedWords[n-1]" :correction="gameStore.corrections[n-1]"/>
+            </div>
+        </VaCardContent>
+    </VaCard>
 </template>
 
 <style scoped>
