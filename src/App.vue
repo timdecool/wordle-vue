@@ -1,11 +1,11 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import MainNavbar from '@/components/layout/MainNavbar.vue'
 
 </script>
 
 <template>
-  <RouterLink to="/">Accueil</RouterLink> |
-  <RouterLink to="/partie">Partie du jour</RouterLink>
+  <main-navbar shadowed />
 
   <RouterView />
 </template>

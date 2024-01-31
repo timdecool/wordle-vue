@@ -6,12 +6,12 @@
 </script>
 
 <template>
-    <section @keydown="gameStore.handleKeyDown" tabindex="0">
-        <h1>C'est le jeu</h1>
-        <game-board>
-        </game-board>
-    </section>
-
+    <main class="game-main">
+        <section @keydown="gameStore.handleKeyDown" tabindex="0">
+            <game-board>
+            </game-board>
+        </section>
+    </main>
 </template>
 
 <style>

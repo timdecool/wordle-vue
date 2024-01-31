@@ -9,7 +9,6 @@ export const useGameStore = defineStore("game", () => {
   const guessedWords = ref([""]);
   const corrections = ref([])
   const currentRow = ref(0);
-  const currentTile = ref(0);
 
   // ACTIONS
 
@@ -60,12 +59,13 @@ export const useGameStore = defineStore("game", () => {
               foundLetters.push(guessedWords.value[currentRow.value][i]);
             }
           }
-          else {
+          
+        for (let i = 0; i < 5; i++)  {
             if(correction[i] === undefined) correction[i] = "wrong"
           }
-          corrections.value.push(correction)
         }
-        console.log(correction)
+        corrections.value.push(correction)
+        console.log(corrections)
 
 
         // if (word == currentUserWord) {

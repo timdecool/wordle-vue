@@ -1,1 +1,30 @@
-@import './base.css';
+@import"https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;1,700&display=swap";@import"https://fonts.googleapis.com/icon?family=Material+Icons";
+
+a {
+    color:black;
+}
+
+a:hover {
+    color: rgb(151, 109, 116);
+}
+
+.flex {
+    display: flex;
+}
+
+.items-center 
+{
+    align-items: center;
+}
+
+.gap-1
+{
+    gap: 0.5em;
+}
+
+.game-main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
